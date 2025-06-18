@@ -19,21 +19,66 @@ body {
   background: #fff0e6;
   padding: 1rem 2rem;
   border-bottom: 1px solid #f5d6c6;
+  position: relative;
 }
 
 .site-header .logo img {
   height: 48px;
 }
 
-.site-header nav a {
-  margin: 0 1rem;
-  text-decoration: none;
-  color: #b85c38;
-  font-weight: bold;
+.nav-links {
+  display: flex;
+  gap: 1rem;
 }
 
-.site-header nav a:hover {
-  text-decoration: underline;
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 1rem;
+}
+
+.hamburger span {
+  display: block;
+  height: 4px;
+  width: 28px;
+  background: #b85c38;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Responsive styles */
+@media (max-width: 800px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff0e6;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 200px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(184,92,56,0.08);
+    display: none;
+    z-index: 10;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .site-header nav a {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+  .hamburger {
+    display: flex;
+  }
 }
 
 .site-footer {
