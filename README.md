@@ -69,4 +69,8 @@ index.html          # HTML template
 
 - Update images in `public/images/` as needed.
 - Edit product data in [`src/pages/Products.jsx`](src/pages/Products.jsx).
-- Update contact information and social links in [`src/components/Footer.jsx`](src/components/Footer
+- Update contact information and social links in [`src/components/Footer.jsx`](src/components/Footer.jsx) and [`src/pages/Contact.jsx`](src/pages/Contact.jsx).
+
+## License
+
+This project is for educational and demonstration purposes.
