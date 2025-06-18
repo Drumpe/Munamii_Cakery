@@ -1,9 +1,37 @@
+/* Style.css */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #fff8f0;
+  font-family: cursive , Arial, sans-serif;
+  background: #493014;
   color: #333;
 }
+.logo {
+  height: 10em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+
 
 .main-content {
   min-height: 70vh;
@@ -15,22 +43,28 @@ body {
 .site-header {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   background: #fff0e6;
   padding: 1rem 2rem;
   border-bottom: 1px solid #f5d6c6;
-  position: relative;
+  position:  relative;
 }
 
 .site-header .logo img {
-  height: 48px;
+  height: 90%;
 }
 
-.nav-links {
-  display: flex;
-  gap: 1rem;
+.nav-links a{
+  display: inline;
+  margin: 3rem;
+  text-decoration: none;
 }
 
+.nav-links a:hover {
+  color: #551e03;
+  text-decoration: underline;
+}
 .hamburger {
   display: none;
   flex-direction: column;
@@ -76,6 +110,11 @@ body {
     margin: 0.5rem 0;
     font-size: 1.2rem;
   }
+  .site-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
   .hamburger {
     display: flex;
   }
@@ -107,23 +146,24 @@ body {
 
 .product-card {
   background: #fff;
-  border: 1px solid #f5d6c6;
+  border: 1px solid #926650;
   border-radius: 8px;
   padding: 1rem;
   text-align: center;
   margin: 0.5rem;
-  box-shadow: 0 2px 8px rgba(184,92,56,0.05);
+  box-shadow: 0 2px 8px rgba(140, 69, 40, 0.05);
   transition: box-shadow 0.2s;
 }
 
 .product-card:hover {
-  box-shadow: 0 4px 16px rgba(184,92,56,0.15);
+  box-shadow: 0 6px 16px rgba(9, 5, 3, 0.15);
 }
 
 .product-card img {
   width: 100%;
   max-width: 160px;
   height: auto;
+  max-height: 160px;
   border-radius: 6px;
 }
 

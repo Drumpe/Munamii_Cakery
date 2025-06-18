@@ -3,7 +3,7 @@ function Contact() {
     <main className="contact-page">
       <h1>Contact Us</h1>
       <p>
-        We'd love to hear from you! Email us at <a href="mailto:your@email.com">your@email.com</a>
+        We'd love to hear from you! Email us at <a href="mailto:munamii@email.com">Munamii@email.com</a>
       </p>
       <form className="contact-form">
         <label>

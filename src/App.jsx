@@ -7,7 +7,7 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 
-import "./App.css";
+import "./style/Style.css";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,8 +18,8 @@ function App() {
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>

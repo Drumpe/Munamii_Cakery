@@ -8,9 +8,9 @@ function Footer() {
         {" | "}
         <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a>
         {" | "}
-        <a href="mailto:your@email.com">Contact via Email</a>
+        <a href="mailto:munamii@email.com">Contact via Email</a>
       </div>
-      <div className="footer-copy">&copy; {new Date().getFullYear()} Bakery</div>
+      <div className="footer-copy">&copy; {new Date().getFullYear()} Munamii Bakery</div>
     </footer>
   );
 }
