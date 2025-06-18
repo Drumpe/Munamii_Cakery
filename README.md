@@ -1,12 +1,72 @@
-# React + Vite
+# Munamii Cakery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive website for Munamii Cakery, built with React and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fully responsive design for mobile and desktop
+- Four main pages: Home, About, Products, Contact
+- Product page with Cupcakes and Wedding Cakes (each with images, titles, and prices)
+- Hamburger menu for easy navigation on mobile devices
+- Consistent header and footer across all pages
+- Footer links to Instagram, Facebook, and email contact
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or newer recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/munamii-cakery.git
+   cd munamii-cakery
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+### Running the Development Server
+
+```sh
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) to view the site in your browser.
+
+### Building for Production
+
+```sh
+npm run build
+```
+
+### Previewing the Production Build
+
+```sh
+npm run preview
+```
+
+## Project Structure
+
+```
+public/
+  images/           # All product and logo images
+src/
+  components/       # Reusable React components (Header, Footer, ProductCard)
+  pages/            # Page components (Home, About, Products, Contact)
+  style/Style.css   # Main stylesheet
+  App.jsx           # Main app component with routing
+  index.jsx         # Entry point
+index.html          # HTML template
+```
+
+## Customization
+
+- Update images in `public/images/` as needed.
+- Edit product data in [`src/pages/Products.jsx`](src/pages/Products.jsx).
+- Update contact information and social links in [`src/components/Footer.jsx`](src/components/Footer
