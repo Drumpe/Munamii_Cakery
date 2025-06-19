@@ -1,7 +1,9 @@
 /* Style.css */
+@import url('https://fonts.googleapis.com/css2?family=REM&display=swap');
+
 body {
   margin: 0;
-  font-family: cursive , Arial, sans-serif;
+  font-family: "REM", cursive , Arial, sans-serif;
   background: #493014;
   color: #333;
 }
