@@ -2,6 +2,10 @@
 
 A responsive website for Munamii Cakery, built with React and Vite.
 
+## 🌐 Live Demo
+
+[View the live site on Netlify](https://munamii.netlify.app)
+
 ## Features
 
 - Fully responsive design for mobile and desktop
