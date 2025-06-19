@@ -15,6 +15,7 @@ function Header() {
         <Link to="/products" onClick={() => setMenuOpen(false)}>Products</Link>
         <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
         <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+        <a className="snipcart-checkout shopcart">Shopping Cart</a>
       </nav>
       <button
         className="hamburger"
@@ -26,6 +27,9 @@ function Header() {
         <span />
         <span />
       </button>
+      {/* <a className="snipcart-checkout shopcart" style={{marginLeft: "1rem"}}>
+        Shopping Cart
+      </a> */}
     </header>
   );
 }

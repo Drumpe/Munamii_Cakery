@@ -1,11 +1,13 @@
 /* Style.css */
 @import url('https://fonts.googleapis.com/css2?family=REM&display=swap');
 
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
+  padding: 0;
   font-family: "REM", cursive , Arial, sans-serif;
-  background: #493014;
-  color: #333;
+  background: #fff0e6;;
+  color: #b85c38;
 }
 .logo {
   height: 10em;
@@ -57,16 +59,48 @@ body {
   height: 90%;
 }
 
-.nav-links a{
-  display: inline;
-  margin: 3rem;
+.nav-links a,
+.nav-link {
+  display: inline-flex;
+  white-space: nowrap;
+  margin: 1.5rem;
   text-decoration: none;
+  color: #b85c38;
+  font-weight: bold;
+  transition: color 0.2s;
+  cursor: pointer;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-link:hover {
   color: #551e03;
   text-decoration: underline;
 }
+
+.snipcart-add-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #d7805d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+/* .shopcart {
+  display: inline;
+  margin: 3rem;
+  color: black;
+  text-decoration: none;
+}
+
+.shopcart:hover {
+  color: #551e03;
+  text-decoration: underline;
+} */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -108,9 +142,17 @@ body {
   .nav-links.open {
     display: flex;
   }
-  .site-header nav a {
+  .site-header nav a,
+  .nav-link {
     margin: 0.5rem 0;
     font-size: 1.2rem;
+  }
+  /* Show cart link in mobile menu, hide desktop cart link */
+  #cart-link-mobile {
+    display: inline;
+  }
+  #cart-link-desktop {
+    display: none;
   }
   .site-header {
     flex-direction: row;
@@ -158,7 +200,7 @@ body {
 }
 
 .product-card:hover {
-  box-shadow: 0 6px 16px rgba(9, 5, 3, 0.15);
+  box-shadow: 0 6px 16px rgba(9, 5, 3, 0.25);
 }
 
 .product-card img {
@@ -202,9 +244,3 @@ body {
   }
 }
 
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: #fff8f0;
-}
