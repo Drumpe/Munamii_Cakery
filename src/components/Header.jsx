@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import "../style/Style.css";
+import { parseSEK } from "../utils";
 
 function Header({ cart, onCheckout }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef();
+  const navigate = useNavigate();
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -20,7 +22,7 @@ function Header({ cart, onCheckout }) {
 
   // Calculate cart summary
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + parseSEK(item.price) * item.quantity, 0);
 
   return (
     <header className="site-header">
@@ -38,7 +40,14 @@ function Header({ cart, onCheckout }) {
         <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
         <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
       </nav>
-      <div className="cart-summary" tabIndex={0} aria-label="Open cart" onClick={onCheckout}>
+      <div
+        className="cart-summary"
+        tabIndex={0}
+        aria-label="Open cart"
+        onClick={() => navigate("/cart")}
+        onKeyDown={e => { if (e.key === "Enter" || e.key === " ") navigate("/cart"); }}
+        role="button"
+      >
         <span role="img" aria-label="Cart">🛒</span>
         <span className="cart-summary-text">
           {totalItems} items | {totalPrice.toFixed(2)} SEK

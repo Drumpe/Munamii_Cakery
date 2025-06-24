@@ -7,14 +7,11 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import CheckoutPage from "./pages/CheckoutPage";
+import CartPage from "./pages/CartPage";
 import { stripePromise } from "./stripePromise";
+import { parseSEK } from "./utils";
 
 import "./style/Style.css";
-
-function parseSEK(priceStr) {
-  if (typeof priceStr !== "string") return 0;
-  return parseFloat(priceStr.replace(/[^\d,\.]/g, '').replace(',', '.')) || 0;
-}
 
 function AppRoutes() {
   const [cart, setCart] = useState([]);
@@ -68,6 +65,10 @@ function AppRoutes() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/checkout" element={<CheckoutPage cart={cart} clientSecret={clientSecret} />} />
+          <Route
+            path="/cart"
+            element={<CartPage cart={cart} onCheckout={handleCheckout} />}
+          />
         </Routes>
       </div>
       <Footer />
