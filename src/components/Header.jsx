@@ -26,6 +26,7 @@ function Header({ cart, onCheckout }) {
 
   return (
     <header className="site-header">
+      <p>This site is for educational purpose only! Version: 0.1</p>
       <div className="logo">
         <img src="/images/logo.png" alt="Munamii Cakery Logo" />
       </div>
