@@ -19,27 +19,33 @@ exports.handler = async function(event, context) {
         body: JSON.stringify({ error: "Invalid JSON in request body" })
       };
     }
-    const { amount, currency } = data;
-    if (!amount || !currency) {
+    const { amount, currency, cart } = data;
+    if (!amount || !currency || !cart) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Missing amount or currency', received: data })
+        body: JSON.stringify({ error: 'Missing amount, currency, or cart', received: data })
       };
     }
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount,
-      currency,
-      // You can add more options here (metadata, receipt_email, etc.)
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: cart.map(item => ({
+        price_data: {
+          currency,
+          product_data: {
+            name: item.name,
+            images: [item.image],
+          },
+          unit_amount: Math.round(item.price * 100),
+        },
+        quantity: item.quantity,
+      })),
+      mode: 'payment',
+      success_url: 'https://munamii.netlify.app/success',
+      cancel_url: 'https://munamii.netlify.app/cancel',
     });
-    if (!paymentIntent || !paymentIntent.client_secret) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: 'Stripe did not return a client secret' })
-      };
-    }
     return {
       statusCode: 200,
-      body: JSON.stringify({ clientSecret: paymentIntent.client_secret })
+      body: JSON.stringify({ sessionId: session.id })
     };
   } catch (error) {
     return {

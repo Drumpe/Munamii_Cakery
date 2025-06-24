@@ -35,21 +35,22 @@ function AppRoutes() {
   const handleCheckout = async () => {
     if (cart.length === 0) return;
     const total = cart.reduce((sum, item) => sum + item.quantity * parseSEK(item.price || item.priceStr || item.priceSEK), 0);
-      if (total < MIN_AMOUNT_SEK) {
-    alert("Minimum order amount is 1.00 SEK.");
-    return;
-  }
-  const amount = Math.round(total * 100); // SEK to öre
+    if (total < MIN_AMOUNT_SEK) {
+      alert("Minimum order amount is 1.00 SEK.");
+      return;
+    }
+    const amount = Math.round(total * 100); // SEK to öre
     try {
       const response = await fetch("/.netlify/functions/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount, currency: "sek" })
+        body: JSON.stringify({ amount, currency: "sek", cart })
       });
       const data = await response.json();
-      if (!data.clientSecret) throw new Error(data.error || "No client secret returned");
-      setClientSecret(data.clientSecret);
-      navigate("/checkout");
+      if (!data.sessionId) throw new Error(data.error || "No session id returned");
+      // Redirect to Stripe Checkout
+      const stripe = await stripePromise;
+      await stripe.redirectToCheckout({ sessionId: data.sessionId });
     } catch (err) {
       alert("Payment error: " + err.message);
     }
