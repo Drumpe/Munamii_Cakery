@@ -1,48 +1,28 @@
 import React, { useState } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { useStripe } from "@stripe/react-stripe-js";
 
-function CheckoutForm({ cart }) {
+function CheckoutForm({ sessionId }) {
   const stripe = useStripe();
-  const elements = useElements();
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleCheckout = async (e) => {
     e.preventDefault();
     setProcessing(true);
     setError(null);
-    if (!stripe || !elements) {
+    if (!stripe) {
       setProcessing(false);
       return;
     }
-    const cardElement = elements.getElement(CardElement);
-    const { error, paymentIntent } = await stripe.confirmCardPayment(
-      elements._clientSecret,
-      {
-        payment_method: {
-          card: cardElement,
-        },
-      }
-    );
-    if (error) {
-      setError(error.message);
-      setProcessing(false);
-    } else if (paymentIntent && paymentIntent.status === "succeeded") {
-      setSuccess(true);
-      setProcessing(false);
-    }
+    const { error } = await stripe.redirectToCheckout({ sessionId });
+    if (error) setError(error.message);
+    setProcessing(false);
   };
 
-  if (success) {
-    return <div>Payment successful! Thank you for your order.</div>;
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="checkout-form">
-      <CardElement options={{ hidePostalCode: true }} />
+    <form onSubmit={handleCheckout} className="checkout-form">
       <button type="submit" disabled={!stripe || processing}>
-        {processing ? "Processing..." : "Pay"}
+        {processing ? "Redirecting..." : "Proceed to Payment"}
       </button>
       {error && <div className="error-message">{error}</div>}
     </form>
