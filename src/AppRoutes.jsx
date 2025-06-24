@@ -33,10 +33,16 @@ function AppRoutes() {
     });
   };
 
+  const MIN_AMOUNT_SEK = 1; // Stripe's minimum for SEK
+
   const handleCheckout = async () => {
     if (cart.length === 0) return;
     const total = cart.reduce((sum, item) => sum + item.quantity * parseSEK(item.price || item.priceStr || item.priceSEK), 0);
-    const amount = Math.round(total * 100); // SEK to öre
+      if (total < MIN_AMOUNT_SEK) {
+    alert("Minimum order amount is 1.00 SEK.");
+    return;
+  }
+  const amount = Math.round(total * 100); // SEK to öre
     try {
       const response = await fetch("/.netlify/functions/create-payment-intent", {
         method: "POST",
