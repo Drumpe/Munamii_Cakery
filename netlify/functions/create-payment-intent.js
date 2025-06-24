@@ -10,11 +10,20 @@ exports.handler = async function(event, context) {
   }
 
   try {
-    const { amount, currency } = JSON.parse(event.body);
+    let data;
+    try {
+      data = typeof event.body === "string" ? JSON.parse(event.body) : event.body;
+    } catch (e) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Invalid JSON in request body" })
+      };
+    }
+    const { amount, currency } = data;
     if (!amount || !currency) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Missing amount or currency' })
+        body: JSON.stringify({ error: 'Missing amount or currency', received: data })
       };
     }
     const paymentIntent = await stripe.paymentIntents.create({
