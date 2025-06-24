@@ -8,6 +8,8 @@ import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import CheckoutPage from "./pages/CheckoutPage";
 import CartPage from "./pages/CartPage";
+import Success from "./pages/Success";
+import Cancel from "./pages/Cancel";
 import { stripePromise } from "./stripePromise";
 import { parseSEK } from "./utils";
 
@@ -66,10 +68,9 @@ function AppRoutes() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/checkout" element={<CheckoutPage cart={cart} clientSecret={clientSecret} />} />
-          <Route
-            path="/cart"
-            element={<CartPage cart={cart} onCheckout={handleCheckout} />}
-          />
+          <Route path="/cart" element={<CartPage cart={cart} onCheckout={handleCheckout} />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/cancel" element={<Cancel />} />
         </Routes>
       </div>
       <Footer />
