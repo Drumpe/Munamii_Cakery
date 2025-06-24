@@ -33,8 +33,13 @@ function Header() {
         <Link to="/products" onClick={() => setMenuOpen(false)}>Products</Link>
         <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
         <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-        <a className="snipcart-checkout" onClick={() => setMenuOpen(false)}>Shopping Cart</a>
       </nav>
+      <div className="cart-summary snipcart-checkout" tabIndex={0} aria-label="Open cart" onClick={() => setMenuOpen(false)}>
+        <span role="img" aria-label="Cart">🛒</span>
+        <span className="cart-summary-text">
+          <span className="snipcart-items-count"></span> items | <span className="snipcart-total-price"></span>
+        </span>
+      </div>
       <button
         className="hamburger"
         aria-label="Toggle menu"

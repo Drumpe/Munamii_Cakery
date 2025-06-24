@@ -52,7 +52,7 @@ html, body, #root {
   flex-direction: column;
   justify-content: space-between;
   background: #fff0e6;
-  padding: 1rem 2rem;
+  padding: 3rem 2rem 0rem 2rem;
   border-bottom: 1px solid #f5d6c6;
   position:  relative;
 }
@@ -210,25 +210,6 @@ html, body, #root {
   justify-content: flex-start;
 }
 
-.snipcart-add-item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #d7805d;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.2s, transform 0.2s;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(140, 69, 40, 0.5);
-}
-.snipcart-add-item:hover {
-  background: #d26c43;
-  transform: translateY(-2px);
-}
-
 .info-tooltip {
   position: relative;
   display: inline-block;
@@ -287,3 +268,79 @@ html, body, #root {
   background: rgba(0,0,0,0.2);
   z-index: 1000;
 }
+
+.cart-summary {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  background: #fff0e6;
+  border: 1px solid #f5d6c6;
+  border-radius: 18px;
+  padding: 0.3em 1em 0.3em 0.7em;
+  font-size: 1.05em;
+  color: #b85c38;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(184,92,56,0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+  z-index: 0;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.cart-summary:focus,
+.cart-summary:hover {
+  background: #ffe5d0;
+  box-shadow: 0 4px 16px rgba(184,92,56,0.15);
+}
+.cart-summary-text {
+  font-size: 1em;
+  white-space: nowrap;
+}
+
+.quantity-input {
+  width: 40px;
+  padding: 0.3em 0.5em;
+  margin: 0.5em 0 1em 0.5em;
+  border: 1px solid #b85c38;
+  border-radius: 6px;
+  font-size: 1em;
+  color: #b85c38;
+  background: #fff8f0;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.quantity-input:focus {
+  border: 1.5px solid #d7805d;
+  box-shadow: 0 0 4px #d7805d33;
+}
+
+.custom-add-to-cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #d7805d;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  margin-top: 0.5em;
+  box-shadow: 0 2px 4px rgba(140, 69, 40, 0.15);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.custom-add-to-cart:hover:not(:disabled),
+.custom-add-to-cart:focus:not(:disabled) {
+  background: #d26c43;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(140, 69, 40, 0.18);
+}
+.custom-add-to-cart:disabled {
+  background: #e0b7a0;
+  color: #fff8f0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
