@@ -270,7 +270,7 @@ html, body, #root {
 }
 
 .cart-summary {
-  position: absolute;
+  position: fixed;
   top: 18px;
   left: 24px;
   background: #fff0e6;
