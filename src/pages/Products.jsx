@@ -25,7 +25,7 @@ const weddingCakes = [
   { image: "/images/weddingcake-9.png", title: "Egyptian Drip", price: "1900 kr", ingredients: "Dates, honey, flour, sugar, eggs, butter" },
 ];
 
-function Products() {
+function Products({ onAddToCart }) {
   return (
     <main className="products-page">
       <h1>Our Products</h1>
@@ -33,7 +33,7 @@ function Products() {
         <h2>Cupcakes</h2>
         <div className="product-grid">
           {cupcakes.map((cupcake, idx) => (
-            <ProductCard key={idx} {...cupcake} />
+            <ProductCard key={idx} {...cupcake} onAddToCart={onAddToCart} />
           ))}
         </div>
       </section>
@@ -41,7 +41,7 @@ function Products() {
         <h2>Wedding Cakes</h2>
         <div className="product-grid">
           {weddingCakes.map((cake, idx) => (
-            <ProductCard key={idx} {...cake} />
+            <ProductCard key={idx} {...cake} onAddToCart={onAddToCart} />
           ))}
         </div>
       </section>

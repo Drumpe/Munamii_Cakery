@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import "../style/Style.css";
 
-function Header() {
+function Header({ cart, onCheckout }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef();
 
@@ -17,6 +17,10 @@ function Header() {
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, [menuOpen]);
+
+  // Calculate cart summary
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <header className="site-header">
@@ -34,10 +38,10 @@ function Header() {
         <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
         <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
       </nav>
-      <div className="cart-summary snipcart-checkout" tabIndex={0} aria-label="Open cart" onClick={() => setMenuOpen(false)}>
+      <div className="cart-summary" tabIndex={0} aria-label="Open cart" onClick={onCheckout}>
         <span role="img" aria-label="Cart">🛒</span>
         <span className="cart-summary-text">
-          <span className="snipcart-items-count"></span> items | <span className="snipcart-total-price"></span>
+          {totalItems} items | {totalPrice.toFixed(2)} SEK
         </span>
       </div>
       <button
