@@ -10,7 +10,7 @@ function Footer() {
         {" | "}
         <a href="mailto:munamii@email.com">Contact via Email</a>
       </div>
-      <div className="footer-copy">&copy; {new Date().getFullYear()} Munamii Bakery</div>
+      <div className="footer-copy">&copy; {new Date().getFullYear()} Munamii Cakery</div>
     </footer>
   );
 }
