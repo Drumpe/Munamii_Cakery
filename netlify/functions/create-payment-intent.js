@@ -8,17 +8,12 @@ exports.handler = async function(event, context) {
       body: JSON.stringify({ error: 'Method Not Allowed' })
     };
   }
-
-  try {
-    let data;
-    try {
-      data = typeof event.body === "string" ? JSON.parse(event.body) : event.body;
       return {
       statusCode: 200,
       body: JSON.stringify({ 
         message: 'Payment intent creation started' 
         // DEBUG: Uncomment the next line to see the received data
-        , received: data
+        //, received: data
         // DEBUG: Uncomment the next line to see the cart items
         , cartItems: cart
         // DEBUG: Uncomment the next line to see the amount and currency
@@ -29,6 +24,11 @@ exports.handler = async function(event, context) {
         , context: context
       })
     }; //DEBUG
+  try {
+    let data;
+    try {
+      data = typeof event.body === "string" ? JSON.parse(event.body) : event.body;
+
     } catch (e) {
       return {
         statusCode: 400,
