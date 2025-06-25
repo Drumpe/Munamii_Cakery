@@ -48,9 +48,9 @@ function AppRoutes() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount, currency: "sek", cart })
       });
-      console.log("Response from create-payment-intent:", response);
+
       const data = await response.json();
-      console.log("Data from create-payment-intent:", data);
+
       if (!data.sessionId) throw new Error(data.error || "No session id returned");
       // Redirect to Stripe Checkout
       const stripe = await stripePromise;
