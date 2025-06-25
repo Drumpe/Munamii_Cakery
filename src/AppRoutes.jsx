@@ -73,6 +73,7 @@ function AppRoutes() {
           <Route path="/cart" element={<CartPage cart={cart} onCheckout={handleCheckout} />} />
           <Route path="/success" element={<Success />} />
           <Route path="/cancel" element={<Cancel />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </div>
       <Footer />
