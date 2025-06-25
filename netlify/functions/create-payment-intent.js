@@ -26,6 +26,7 @@ exports.handler = async function(event, context) {
         // DEBUG: Uncomment the next line to see the session ID
         , sessionId: session.id
         , event: event
+        , context: context
       })
     }; //DEBUG
     } catch (e) {
