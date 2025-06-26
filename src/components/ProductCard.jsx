@@ -1,17 +1,13 @@
 import "../style/Style.css";
 import { useState } from "react";
-
-function parseSEK(priceStr) {
-  // Extract number from e.g. "30 kr"
-  return parseFloat(priceStr.replace(/[^\d,\.]/g, '').replace(',', '.'));
-}
+import { parseSEK } from "../utils";
 
 function ProductCard({ image, title, price, ingredients, onAddToCart }) {
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    if (quantity < 1) return;
+    if (quantity < 1 || isNaN(quantity)) return;
     onAddToCart({
       id: title,
       name: title,
@@ -20,6 +16,12 @@ function ProductCard({ image, title, price, ingredients, onAddToCart }) {
       quantity,
       currency: "SEK"
     });
+    setQuantity(1); // Reset after adding
+  };
+
+  const handleQuantityChange = (e) => {
+    const val = Math.max(1, Number(e.target.value));
+    setQuantity(val);
   };
 
   return (
@@ -39,12 +41,13 @@ function ProductCard({ image, title, price, ingredients, onAddToCart }) {
         type="number"
         min="1"
         value={quantity}
-        onChange={e => setQuantity(Number(e.target.value))}
+        onChange={handleQuantityChange}
       />
       <br />
       <button
-        className="custom-add-to-cart"
+        className="custom-button"
         onClick={handleAddToCart}
+        disabled={quantity < 1}
       >
         Add to Cart
       </button>

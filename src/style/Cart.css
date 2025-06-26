@@ -1,0 +1,118 @@
+/* Cart list styling */
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each cart item as a flex row */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Left side: name and price */
+.item-name {
+  flex: 2;
+  font-weight: 500;
+}
+.item-price {
+  flex: 1;
+  text-align: left;
+}
+
+/* Right side: quantity controls */
+.item-qty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Quantity input styling */
+.cart-qty-input,
+.quantity-input {
+  width: 3rem;
+  min-width: 0;
+  text-align: center;
+  height: 2.2rem;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0 0.25rem;
+  box-sizing: border-box;
+}
+
+/* Optional: button styling for consistency */
+.qty-btn,
+.custom-button.qty-btn {
+  height: 2.2rem;
+  min-width: 2.2rem;
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cart table header styling */
+.cart-table-header, .cart-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.cart-table-header {
+  font-weight: bold;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cart-col, .product-col, .price-col, .qty-col, .subtotal-col {
+  flex: 1;
+  text-align: left;
+}
+
+.qty-col, .subtotal-col {
+  text-align: right;
+}
+
+.cart-item {
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+}
+
+/* Center cart total and checkout button */
+.cart-total {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.checkout-btn {
+  display: block;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+  padding: 0.75rem 2.5rem;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .cart-table-header {
+    display: none;
+  }
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cart-col, .product-col, .price-col, .qty-col, .subtotal-col {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0.25rem;
+  }
+}

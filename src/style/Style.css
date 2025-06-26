@@ -315,7 +315,7 @@ html, body, #root {
   box-shadow: 0 0 4px #d7805d33;
 }
 
-.custom-add-to-cart {
+.custom-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -331,13 +331,13 @@ html, body, #root {
   cursor: pointer;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-.custom-add-to-cart:hover:not(:disabled),
-.custom-add-to-cart:focus:not(:disabled) {
+.custom-button:hover:not(:disabled),
+.custom-button:focus:not(:disabled) {
   background: #d26c43;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(140, 69, 40, 0.18);
 }
-.custom-add-to-cart:disabled {
+.custom-button:disabled {
   background: #e0b7a0;
   color: #fff8f0;
   cursor: not-allowed;

@@ -60,6 +60,16 @@ function AppRoutes() {
     }
   };
 
+  const handleQuantityChange = (id, newQuantity) => {
+    setCart((prevCart) =>
+      prevCart
+        .map(item =>
+          item.id === id ? { ...item, quantity: Math.max(1, newQuantity) } : item
+        )
+        .filter(item => item.quantity > 0)
+    );
+  };
+
   return (
     <>
       <Header cart={cart} onCheckout={handleCheckout} />
@@ -70,7 +80,7 @@ function AppRoutes() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/checkout" element={<CheckoutPage cart={cart} clientSecret={clientSecret} />} />
-          <Route path="/cart" element={<CartPage cart={cart} onCheckout={handleCheckout} />} />
+          <Route path="/cart" element={<CartPage cart={cart} onCheckout={handleCheckout} onQuantityChange={handleQuantityChange} />} />
           <Route path="/success" element={<Success />} />
           <Route path="/cancel" element={<Cancel />} />
           <Route path="*" element={<Home />} />

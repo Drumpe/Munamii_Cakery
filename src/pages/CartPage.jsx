@@ -1,28 +1,79 @@
-import React from "react";
+import "../style/Cart.css";
+import { Link } from "react-router";
 import { parseSEK } from "../utils";
 
-function CartPage({ cart, onCheckout }) {
+function CartPage({ cart, onCheckout, onQuantityChange }) {
   const total = cart.reduce(
     (sum, item) => sum + item.quantity * parseSEK(item.price),
     0
   );
 
   return (
-    <div>
-      <h2>Your Cart</h2>
+    <div className="container cart-page">
+      <div className="cart-header">
+        <Link to="/products" className="back-link nav-link">
+          &larr; Continue shopping
+        </Link>
+        <h2>Your Shopping Cart</h2>
+      </div>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="empty-cart-msg">Your shopping cart is empty.</p>
       ) : (
-        <ul>
-          {cart.map((item) => (
-            <li key={item.id}>
-              {item.name} × {item.quantity} — {item.price} SEK
-            </li>
-          ))}
-        </ul>
+        <div className="cart-table-wrapper">
+          <div className="cart-table-header">
+            <span className="cart-col product-col">Product</span>
+            <span className="cart-col price-col">Price</span>
+            <span className="cart-col qty-col">Quantity</span>
+            <span className="cart-col subtotal-col">Subtotal</span>
+          </div>
+          <ul className="cart-list">
+            {cart.map((item) => (
+              <li key={item.id} className="cart-item">
+                <span className="item-name product-col">{item.name}</span>
+                <span className="item-price price-col">{item.price} SEK</span>
+                <div className="item-qty qty-col">
+                  <button
+                    className="custom-button qty-btn"
+                    onClick={() => onQuantityChange(item.id, item.quantity - 1)}
+                    disabled={item.quantity <= 1}
+                    aria-label={`Decrease quantity of ${item.name}`}
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    min="1"
+                    value={item.quantity}
+                    onChange={(e) =>
+                      onQuantityChange(item.id, Math.max(1, Number(e.target.value)))
+                    }
+                    className="quantity-input cart-qty-input"
+                    aria-label={`Quantity of ${item.name}`}
+                  />
+                  <button
+                    className="custom-button qty-btn"
+                    onClick={() => onQuantityChange(item.id, item.quantity + 1)}
+                    aria-label={`Increase quantity of ${item.name}`}
+                  >
+                    +
+                  </button>
+                </div>
+                <span className="item-subtotal subtotal-col">
+                  {(parseSEK(item.price) * item.quantity).toFixed(2)} SEK
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
-      <div>Total: {total.toFixed(2)} SEK</div>
-      <button onClick={onCheckout} disabled={cart.length === 0}>
+      <div className="cart-total">
+        Total: <span>{total.toFixed(2)} SEK</span>
+      </div>
+      <button
+        className="checkout-btn custom-button"
+        onClick={onCheckout}
+        disabled={cart.length === 0}
+      >
         Proceed to Checkout
       </button>
     </div>
