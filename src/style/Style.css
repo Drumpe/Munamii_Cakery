@@ -103,7 +103,7 @@ html, body, #root {
 }
 
 /* Responsive styles */
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .nav-links {
     position: fixed;
     top: 70px;
