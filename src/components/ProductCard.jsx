@@ -35,15 +35,34 @@ function ProductCard({ image, title, price, ingredients, onAddToCart }) {
         </span>
         {price}
       </p>
-      <input
-        className="quantity-input"
-        id={`quantity-${title}`}
-        type="number"
-        min="1"
-        value={quantity}
-        onChange={handleQuantityChange}
-      />
-      <br />
+      <div className="product-qty-controls" >
+        <button
+          className="custom-button qty-btn"
+          type="button"
+          onClick={() => setQuantity(q => Math.max(1, q - 1))}
+          disabled={quantity <= 1}
+          aria-label={`Decrease quantity of ${title}`}
+        >
+          -
+        </button>
+        <input
+          className="quantity-input no-spinner"
+          id={`quantity-${title}`}
+          type="number"
+          min="1"
+          value={quantity}
+          onChange={handleQuantityChange}
+          aria-label={`Quantity of ${title}`}
+        />
+        <button
+          className="custom-button qty-btn"
+          type="button"
+          onClick={() => setQuantity(q => q + 1)}
+          aria-label={`Increase quantity of ${title}`}
+        >
+          +
+        </button>
+      </div>
       <button
         className="custom-button"
         onClick={handleAddToCart}

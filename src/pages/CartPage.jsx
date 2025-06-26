@@ -47,7 +47,7 @@ function CartPage({ cart, onCheckout, onQuantityChange }) {
                     onChange={(e) =>
                       onQuantityChange(item.id, Math.max(1, Number(e.target.value)))
                     }
-                    className="quantity-input cart-qty-input"
+                    className="quantity-input cart-qty-input no-spinner"
                     aria-label={`Quantity of ${item.name}`}
                   />
                   <button
