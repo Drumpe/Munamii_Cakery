@@ -70,6 +70,10 @@ function AppRoutes() {
     );
   };
 
+  const handleRemoveFromCart = (id) => {
+    setCart((prevCart) => prevCart.filter(item => item.id !== id));
+  };
+
   return (
     <>
       <Header cart={cart} onCheckout={handleCheckout} />
@@ -80,7 +84,17 @@ function AppRoutes() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/checkout" element={<CheckoutPage cart={cart} clientSecret={clientSecret} />} />
-          <Route path="/cart" element={<CartPage cart={cart} onCheckout={handleCheckout} onQuantityChange={handleQuantityChange} />} />
+          <Route
+            path="/cart"
+            element={
+              <CartPage
+                cart={cart}
+                onCheckout={handleCheckout}
+                onQuantityChange={handleQuantityChange}
+                onRemoveFromCart={handleRemoveFromCart}
+              />
+            }
+          />
           <Route path="/success" element={<Success />} />
           <Route path="/cancel" element={<Cancel />} />
           <Route path="*" element={<Home />} />
