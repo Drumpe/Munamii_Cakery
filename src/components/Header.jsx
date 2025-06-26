@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import "../style/Style.css";
 import { parseSEK } from "../utils";
+import { APP_VERSION } from "../version";
 
 function Header({ cart, onCheckout }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +27,7 @@ function Header({ cart, onCheckout }) {
 
   return (
     <header className="site-header">
-      <p>This site is for educational purpose only! Version: 0.3.1</p>
+      <p>This site is for educational purpose only! Version: {APP_VERSION}</p>
       <div className="logo">
         <img src="/images/logo.png" alt="Munamii Cakery Logo" />
       </div>
