@@ -28,11 +28,13 @@ function ProductCard({ image, title, price, ingredients, onAddToCart }) {
     <div className="product-card">
       <img src={image} alt={title} />
       <h3>{title}</h3>
-      <p className="price">
+      <p>
         <span className="info-tooltip">
-          <span className="info-icon" tabIndex={0}>ⓘ</span>
+          <span className="info-icon" tabIndex={0}>Ingredients</span>
           <span className="tooltip-text">{ingredients}</span>
         </span>
+      </p>
+      <p className="price">
         {price}
       </p>
       <div className="product-qty-controls" >
