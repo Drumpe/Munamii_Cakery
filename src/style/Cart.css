@@ -31,7 +31,9 @@
   flex-wrap: wrap;
   width: 100%;
 }
-
+.cart-title, .cart-empty-msg {
+  text-align: center;
+}
 /* Left side: name and price */
 .item-name {
   flex: 1 1 100%;

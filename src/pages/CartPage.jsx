@@ -9,15 +9,15 @@ function CartPage({ cart, onCheckout, onQuantityChange, onRemoveFromCart }) {
   );
 
   return (
-    <div className="container cart-page">
+    <div className="cart-page">
       <div className="cart-header">
         <Link to="/products" className="back-link nav-link">
           &larr; Continue shopping
         </Link>
-        <h2>Your Shopping Cart</h2>
+        <h2 className="cart-title">Your Shopping Cart</h2>
       </div>
       {cart.length === 0 ? (
-        <p className="empty-cart-msg">Your shopping cart is empty.</p>
+        <p className="cart-empty-msg">Your shopping cart is empty.</p>
       ) : (
         <div className="cart-table-wrapper">
           <div className="cart-table-header">
