@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation} from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import "../style/Style.css";
 import { parseSEK } from "../utils";
@@ -8,6 +8,7 @@ function Header({ cart, onCheckout }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -42,19 +43,21 @@ function Header({ cart, onCheckout }) {
         <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
         <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
       </nav>
-      <div
-        className="cart-summary"
-        tabIndex={0}
-        aria-label="Open cart"
-        onClick={() => navigate("/cart")}
-        onKeyDown={e => { if (e.key === "Enter" || e.key === " ") navigate("/cart"); }}
-        role="button"
-      >
-        <span role="img" aria-label="Cart">🛒</span>
-        <span className="cart-summary-text">
-          {totalItems} items | {totalPrice.toFixed(2)} SEK
-        </span>
-      </div>
+      {totalItems > 0 && location.pathname !== "/cart" && (
+        <div
+          className="cart-summary"
+          tabIndex={0}
+          aria-label="Open cart"
+          onClick={() => navigate("/cart")}
+          onKeyDown={e => { if (e.key === "Enter" || e.key === " ") navigate("/cart"); }}
+          role="button"
+        >
+          <span role="img" aria-label="Cart">🛒</span>
+          <span className="cart-summary-text">
+            {totalItems} items | {totalPrice.toFixed(2)} SEK
+          </span>
+        </div>
+      )}
       <button
         className="hamburger"
         aria-label="Toggle menu"

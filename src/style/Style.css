@@ -6,8 +6,16 @@ html, body, #root {
   margin: 0;
   padding: 0;
   font-family: cursive , Arial, sans-serif;
-  background: #f6eee8;;
-  color: #b85c38;
+  color: hsl(17, 56%, 30%);
+}
+
+body{
+  background-image: url('/images/bg-bakery2.png');
+  background-size: cover;       /* Fyll hela ytan */
+  background-repeat: no-repeat; /* Ingen upprepning */
+  background-attachment: fixed; /* Parallax-effekt (valfritt) */
+  background-position: center;  /* Centrera bilden */
+  background-color: #f6eee8;
 }
 
 .logo {
@@ -41,7 +49,7 @@ html, body, #root {
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #f8f4f2;
+  /* background-color:rgba(248,244,242,0.85); */
   text-align: center;
 }
 
@@ -50,7 +58,7 @@ html, body, #root {
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  background: #fff0e6;
+  /* background-color: rgba(248,244,242,0.85); */
   padding: 3rem 2rem 0rem 2rem;
   border-bottom: 1px solid #f5d6c6;
   position:  relative;
@@ -66,7 +74,7 @@ html, body, #root {
   white-space: nowrap;
   margin: 1.5rem;
   text-decoration: none;
-  color: #b85c38;
+  color: hsl(17, 56%, 30%);
   font-weight: bold;
   transition: color 0.2s;
   cursor: pointer;
@@ -74,17 +82,17 @@ html, body, #root {
 
 .nav-links a:hover,
 .nav-link:hover {
-  color: #551e03;
-  text-decoration: underline;
+  color:hsl(170, 63.5%, 40.8%);
+  /* text-decoration: underline; */
 }
 
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: none;
+  width: 48px;
+  height: 48px;
+  background-color: none;
   border: none;
   cursor: pointer;
   padding: 0;
@@ -93,11 +101,11 @@ html, body, #root {
 
 .hamburger span {
   display: block;
-  height: 4px;
-  width: 28px;
-  background: #b85c38;
+  height: 5px;
+  width: 42px;
+  background-color: #b85c38;
   margin: 5px 0;
-  border-radius: 2px;
+  border-radius: 3px;
   transition: 0.3s;
 }
 
@@ -107,12 +115,12 @@ html, body, #root {
     position: fixed;
     top: 70px;
     right: 10px;
-    background: #fff0e6;
+    background-color: #fff0e67b;
     flex-direction: column;
     align-items: flex-end;
-    width: 220px;
+    width: 110px;
     max-width: 90vw;
-    min-width: 160px;
+    min-width: 100px;
     border-radius: 12px;
     height: auto;
     padding: 1.2rem 1rem;
@@ -124,6 +132,10 @@ html, body, #root {
   .nav-links.open {
     display: flex;
   }
+  .nav-links.open ~ .hamburger,
+  .hamburger.hide {
+    display: none;
+  }
   .site-header {
     flex-direction: row;
     justify-content: space-between;
@@ -131,6 +143,7 @@ html, body, #root {
     position: static;
   }
   .hamburger {
+    background-color: transparent;
     display: flex;
   }
   .version-text {
@@ -139,31 +152,33 @@ html, body, #root {
 }
 
 .site-footer {
-  background: #fff0e6;
+  /* background-color: #fff0e6; */
   padding: 1rem 2rem;
   text-align: center;
   border-top: 1px solid #f5d6c6;
-  color: #b85c38;
+  color: hsl(17, 56%, 30%);
 }
 
 .site-footer a {
-  color: #b85c38;
+  color: hsl(17, 56%, 30%);
   text-decoration: none;
   margin: 0 0.5rem;
 }
 
 .site-footer a:hover {
+  color: hsl(170, 63.5%, 40.8%);
   text-decoration: underline;
 }
 
 .footer-copy {
   margin-top: 0.5rem;
   font-size: 0.9em;
-  color: #a0522d;
+  color: hsl(17, 56%, 30%);
 }
 
+
 .product-card {
-  background: #fff;
+  background-color: #f1ebeb8d;
   border: 1px solid #926650;
   border-radius: 8px;
   padding: 1rem;
@@ -201,7 +216,6 @@ html, body, #root {
 }
 
 .products-page h2 {
-  color: #b85c38;
   margin-bottom: 1rem;
 }
 
@@ -230,7 +244,7 @@ html, body, #root {
 
 .info-icon:hover,
 .info-icon:focus {
-  background: #ffe5d0;
+  background-color: #ffe5d0;
 }
 
 .tooltip-text {
@@ -267,7 +281,7 @@ html, body, #root {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.2);
   z-index: 1000;
 }
 
@@ -275,7 +289,7 @@ html, body, #root {
   position: fixed;
   top: 18px;
   left: 24px;
-  background: #fff0e6;
+  background-color: #fff0e6;
   border: 1px solid #f5d6c6;
   border-radius: 18px;
   padding: 0.3em 1em 0.3em 0.7em;
@@ -292,7 +306,7 @@ html, body, #root {
 }
 .cart-summary:focus,
 .cart-summary:hover {
-  background: #ffe5d0;
+  background-color: #ffe5d0;
   box-shadow: 0 4px 16px rgba(184,92,56,0.15);
 }
 .cart-summary-text {
@@ -308,7 +322,7 @@ html, body, #root {
   border-radius: 6px;
   font-size: 1em;
   color: #b85c38;
-  background: #fff8f0;
+  background-color: #fff8f0;
   outline: none;
   transition: border 0.2s, box-shadow 0.2s;
 }
@@ -321,7 +335,7 @@ html, body, #root {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #d7805d;
+  background-color: #d7805d;
   color: white;
   padding: 0.5rem 1.2rem;
   border-radius: 6px;
@@ -335,12 +349,12 @@ html, body, #root {
 }
 .custom-button:hover:not(:disabled),
 .custom-button:focus:not(:disabled) {
-  background: #d26c43;
+  background-color: #d26c43;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(140, 69, 40, 0.18);
 }
 .custom-button:disabled {
-  background: #e0b7a0;
+  background-color: #e0b7a0;
   color: #fff8f0;
   cursor: not-allowed;
   opacity: 0.7;
