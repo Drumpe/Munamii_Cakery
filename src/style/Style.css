@@ -10,11 +10,11 @@ html, body, #root {
 }
 
 body{
-  background-image: url('/images/bg-bakery2.png');
-  background-size: cover;       /* Fyll hela ytan */
-  background-repeat: no-repeat; /* Ingen upprepning */
-  background-attachment: fixed; /* Parallax-effekt (valfritt) */
-  background-position: center;  /* Centrera bilden */
+  background-image: url('/images/bg-bakery-green.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   background-color: #f6eee8;
 }
 
