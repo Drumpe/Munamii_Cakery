@@ -124,4 +124,4 @@ This project is ready to be deployed on platforms like [Netlify](https://www.net
 
 ## License
 
-This project is for educational
+This project is made for educational purposes
