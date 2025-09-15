@@ -1,6 +1,7 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+import stripePackage from 'stripe';
+const stripe = stripePackage(process.env.STRIPE_SECRET_KEY);
 
-exports.handler = async function(event, context) {
+export async function handler(event, context) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -19,6 +20,7 @@ exports.handler = async function(event, context) {
         body: JSON.stringify({ error: "Invalid JSON in request body" })
       };
     }
+
     const { amount, currency, cart } = data;
     if (!amount || !currency || !cart) {
       return {
@@ -26,6 +28,9 @@ exports.handler = async function(event, context) {
         body: JSON.stringify({ error: 'Missing amount, currency, or cart', received: data })
       };
     }
+    
+    const isDevelopment = process.env.NODE_ENV === 'development';
+    const BASE_URL = process.env.BASE_URL || (isDevelopment ? 'http://localhost:8888' : 'https://munamii.netlify.app');
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -41,8 +46,8 @@ exports.handler = async function(event, context) {
         quantity: item.quantity,
       })),
       mode: 'payment',
-      success_url: 'https://munamii.netlify.app/success',
-      cancel_url: 'https://munamii.netlify.app/cancel',
+      success_url: `${BASE_URL}/success`,
+      cancel_url: `${BASE_URL}/cancel`,
     });
     return {
       statusCode: 200,
