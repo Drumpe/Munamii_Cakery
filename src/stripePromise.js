@@ -1,4 +1,3 @@
-// src/stripePromise.js
 import { loadStripe } from '@stripe/stripe-js';
-
-export const stripePromise = loadStripe('pk_test_51RdaK6RgvLNCEBdYi69hRNt6ObGYvxO27t6FNteWYeqgN50cURvOBmLZJfk5p0lx2FLIGB8S60HIrxg9qdzhnUJb00RGK6ZtAf');
+// The publishable key is safe to be exposed on the client side
+export const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
